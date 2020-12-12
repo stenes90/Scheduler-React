@@ -1,0 +1,16 @@
+﻿.date-item {
+    border: 1px solid black;
+    display: inline-block;
+    margin: 5px;
+    text-align: center;
+    background-color: #d9edf7;
+    
+}
+
+    .date-item:hover{
+        cursor:pointer;
+    }
+
+    .selected {
+        background-color: #009FDD;
+    }
