@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
 namespace SchedulerR.Models
@@ -53,15 +54,17 @@ namespace SchedulerR.Models
 
         public bool IsScheduled { get; set; }
 
-        public TimeRange Timerange()
-        {
-            var timeRange = new TimeRange();
-            timeRange.Start = StartTime;
-            timeRange.End = EndTime;
+        public TimeRange Timerange { get; set; }
+
+        //public TimeRange Timerange()
+        //{
+        //    var timeRange = new TimeRange();
+        //    timeRange.Start = StartTime;
+        //    timeRange.End = EndTime;
 
 
-            return timeRange;
-        }
+        //    return timeRange;
+        //}
 
 
 

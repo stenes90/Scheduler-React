@@ -32,16 +32,16 @@ namespace SchedulerR.Models
 
 
 
-        public List<DateTime> AvailableDates()
-        {
-            var startDate = StartDate;
-            var endDate = EndDate;
-            List<DateTime> listOfDates = new List<DateTime>();
-            for (var date = startDate; date <= endDate; date = date.AddDays(1))
-                listOfDates.Add(date);
+        //public List<DateTime> AvailableDates()
+        //{
+        //    var startDate = StartDate;
+        //    var endDate = EndDate;
+        //    List<DateTime> listOfDates = new List<DateTime>();
+        //    for (var date = startDate; date <= endDate; date = date.AddDays(1))
+        //        listOfDates.Add(date);
 
-            return listOfDates;
-        }
+        //    return listOfDates;
+        //}
 
 
 

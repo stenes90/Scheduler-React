@@ -1,0 +1,9 @@
+.time-bar-stamp {
+  float: left;
+}
+
+.time-bar {
+  display: flex;
+  height: 2vh;
+  font-size: 10px;
+}

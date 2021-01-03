@@ -1,0 +1,29 @@
+.classes-times {
+  max-width: 30vw;
+}
+
+span.decrease {
+  position: absolute;
+  margin-left: auto;
+  margin-right: auto;
+  left: 0;
+  right: 0;
+  text-align: center;
+}
+
+span.increase {
+  position: absolute;
+  margin-left: auto;
+  margin-right: auto;
+  left: 0;
+  right: 0;
+  text-align: center;
+}
+
+.input-box {
+  display: flex;
+}
+
+.col.time {
+  border: 1px grey solid;
+}

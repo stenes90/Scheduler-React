@@ -1,1 +1,32 @@
-﻿
+﻿* {
+  box-sizing: border-box;
+}
+
+.container-fluid {
+  overflow-x: auto;
+  position: relative;
+}
+
+.court-div {
+  position: relative;
+}
+.timeslot {
+  float: left;
+  height: 100%;
+  border: 1px grey solid;
+  font-size: 8px;
+}
+
+.court-name {
+  height: 10vh;
+  width: 5vw;
+  border: 1px grey solid;
+  font-size: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.court-names {
+  position: absolute;
+}

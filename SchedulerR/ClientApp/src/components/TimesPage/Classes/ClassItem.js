@@ -1,11 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿import React from "react";
 
-namespace SchedulerReact.ClientApp.src.components.TimesPage.Classes
-{
-    public class ClassItem
-    {
-    }
-}
+const ClassItem = (props) => {
+  const onClassSelect = () => {
+    props.onClassSelect(props.id);
+  };
+
+  return (
+    <a className="dropdown-item" href="#" onClick={onClassSelect}>
+      {props.name}
+    </a>
+  );
+};
+
+export default ClassItem;

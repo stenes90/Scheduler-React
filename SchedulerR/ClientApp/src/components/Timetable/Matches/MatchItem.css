@@ -1,1 +1,12 @@
-﻿
+﻿.match {
+  position: absolute;
+
+  top: 0;
+  border: 1px black solid;
+  height: 10vh;
+}
+
+.match p {
+  color: white;
+  font-size: 10px;
+}

@@ -1,0 +1,20 @@
+.courts-container .container-fluid {
+  padding-left: 0px;
+}
+
+.timeslots-container {
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.court-names {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  max-width: 5vw;
+  margin-top: 2vh;
+}
+
+.courts-container {
+  display: flex;
+}

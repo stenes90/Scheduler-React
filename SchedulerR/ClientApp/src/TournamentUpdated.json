@@ -1,0 +1,679 @@
+{
+  "Id": 0,
+  "StartDate": "2020-09-30T00:00:00",
+  "EndDate": "2020-10-03T00:00:00",
+  "Courts": [
+    { "Id": 11, "Name": "Court 1", "checked": true },
+    { "Id": 12, "Name": "Court 2", "checked": true },
+    { "Id": 13, "Name": "Court 3", "checked": true }
+  ],
+  "Classes": [
+    {
+      "Id": 1144,
+      "Name": "Klasa 1",
+      "MatchDuration": 30,
+      "BreakBetweenMatches": 30,
+      "PlayingDatesStrings": [
+        "2020-09-30T00:00:00",
+        "2020-10-01T00:00:00",
+        "2020-10-02T00:00:00",
+        "2020-10-03T00:00:00"
+      ],
+      "PlayingDates": [
+        {
+          "Id": 1,
+          "StartTime": "2020-09-30T08:00:00+02:00",
+          "EndTime": "2020-09-30T22:00:00+02:00",
+          "Courts": [
+            { "Id": 11, "Name": "Court 1", "checked": true },
+            { "Id": 12, "Name": "Court 2", "checked": true },
+            { "Id": 13, "Name": "Court 3", "checked": true }
+          ]
+        },
+        {
+          "Id": 2,
+          "StartTime": "2020-10-01T08:00:00+02:00",
+          "EndTime": "2020-10-01T22:00:00+02:00",
+          "Courts": [
+            { "Id": 11, "Name": "Court 1", "checked": true },
+            { "Id": 12, "Name": "Court 2", "checked": true },
+            { "Id": 13, "Name": "Court 3", "checked": true }
+          ]
+        },
+        {
+          "Id": 3,
+          "StartTime": "2020-10-02T08:00:00+02:00",
+          "EndTime": "2020-10-02T22:00:00+02:00",
+          "Courts": [
+            { "Id": 11, "Name": "Court 1", "checked": true },
+            { "Id": 12, "Name": "Court 2", "checked": true },
+            { "Id": 13, "Name": "Court 3", "checked": true }
+          ]
+        },
+        {
+          "Id": 4,
+          "StartTime": "2020-10-03T08:00:00+02:00",
+          "EndTime": "2020-10-03T22:00:00+02:00",
+          "Courts": [
+            { "Id": 11, "Name": "Court 1", "checked": true },
+            { "Id": 12, "Name": "Court 2", "checked": true },
+            { "Id": 13, "Name": "Court 3", "checked": true }
+          ]
+        }
+      ]
+    },
+    {
+      "Id": 1145,
+      "Name": "Klasa 2",
+      "MatchDuration": 30,
+      "BreakBetweenMatches": 30,
+      "PlayingDatesStrings": ["2020-09-30T00:00:00", "2020-10-01T00:00:00"],
+      "PlayingDates": [
+        {
+          "Id": 1,
+          "StartTime": "2020-09-30T08:00:00+02:00",
+          "EndTime": "2020-09-30T22:00:00+02:00",
+          "Courts": [
+            { "Id": 11, "Name": "Court 1", "checked": true },
+            { "Id": 12, "Name": "Court 2", "checked": true },
+            { "Id": 13, "Name": "Court 3", "checked": true }
+          ]
+        },
+        {
+          "Id": 2,
+          "StartTime": "2020-10-01T08:00:00+02:00",
+          "EndTime": "2020-10-01T22:00:00+02:00",
+          "Courts": [
+            { "Id": 11, "Name": "Court 1", "checked": true },
+            { "Id": 12, "Name": "Court 2", "checked": true },
+            { "Id": 13, "Name": "Court 3", "checked": true }
+          ]
+        }
+      ]
+    }
+  ],
+  "PlayingDates": [
+    {
+      "Id": 1,
+      "StartTime": "2020-09-30T08:00:00+02:00",
+      "EndTime": "2020-09-30T22:00:00+02:00",
+      "Courts": [
+        { "Id": 11, "Name": "Court 1", "checked": true },
+        { "Id": 12, "Name": "Court 2", "checked": true },
+        { "Id": 13, "Name": "Court 3", "checked": true }
+      ]
+    },
+    {
+      "Id": 2,
+      "StartTime": "2020-10-01T08:00:00+02:00",
+      "EndTime": "2020-10-01T22:00:00+02:00",
+      "Courts": [
+        { "Id": 11, "Name": "Court 1", "checked": true },
+        { "Id": 12, "Name": "Court 2", "checked": true },
+        { "Id": 13, "Name": "Court 3", "checked": true }
+      ]
+    },
+    {
+      "Id": 3,
+      "StartTime": "2020-10-02T08:00:00+02:00",
+      "EndTime": "2020-10-02T22:00:00+02:00",
+      "Courts": [
+        { "Id": 11, "Name": "Court 1", "checked": true },
+        { "Id": 12, "Name": "Court 2", "checked": true },
+        { "Id": 13, "Name": "Court 3", "checked": true }
+      ]
+    },
+    {
+      "Id": 4,
+      "StartTime": "2020-10-03T08:00:00+02:00",
+      "EndTime": "2020-10-03T22:00:00+02:00",
+      "Courts": [
+        { "Id": 11, "Name": "Court 1", "checked": true },
+        { "Id": 12, "Name": "Court 2", "checked": true },
+        { "Id": 13, "Name": "Court 3", "checked": true }
+      ]
+    }
+  ],
+  "Matches": [
+    {
+      "Id": 1,
+      "Round": 1,
+      "MatchDuration": 30,
+      "CourtId": null,
+      "ClassId": 1144,
+      "StartTime": "0001-01-01T00:00:00",
+      "EndTime": "0001-01-01T00:00:00",
+      "PlayingDate": null,
+      "matchScheduleIndex": 0,
+      "IsScheduled": false
+    },
+    {
+      "Id": 2,
+      "Round": 1,
+      "MatchDuration": 30,
+      "CourtId": null,
+      "ClassId": 1144,
+      "StartTime": "0001-01-01T00:00:00",
+      "EndTime": "0001-01-01T00:00:00",
+      "PlayingDate": null,
+      "matchScheduleIndex": 0,
+      "IsScheduled": false
+    },
+    {
+      "Id": 3,
+      "Round": 1,
+      "MatchDuration": 30,
+      "CourtId": null,
+      "ClassId": 1144,
+      "StartTime": "0001-01-01T00:00:00",
+      "EndTime": "0001-01-01T00:00:00",
+      "PlayingDate": null,
+      "matchScheduleIndex": 0,
+      "IsScheduled": false
+    },
+    {
+      "Id": 4,
+      "Round": 1,
+      "MatchDuration": 30,
+      "CourtId": null,
+      "ClassId": 1144,
+      "StartTime": "0001-01-01T00:00:00",
+      "EndTime": "0001-01-01T00:00:00",
+      "PlayingDate": null,
+      "matchScheduleIndex": 0,
+      "IsScheduled": false
+    },
+    {
+      "Id": 5,
+      "Round": 1,
+      "MatchDuration": 30,
+      "CourtId": null,
+      "ClassId": 1144,
+      "StartTime": "0001-01-01T00:00:00",
+      "EndTime": "0001-01-01T00:00:00",
+      "PlayingDate": null,
+      "matchScheduleIndex": 0,
+      "IsScheduled": false
+    },
+    {
+      "Id": 6,
+      "Round": 1,
+      "MatchDuration": 30,
+      "CourtId": null,
+      "ClassId": 1144,
+      "StartTime": "0001-01-01T00:00:00",
+      "EndTime": "0001-01-01T00:00:00",
+      "PlayingDate": null,
+      "matchScheduleIndex": 0,
+      "IsScheduled": false
+    },
+    {
+      "Id": 7,
+      "Round": 1,
+      "MatchDuration": 30,
+      "CourtId": null,
+      "ClassId": 1145,
+      "StartTime": "0001-01-01T00:00:00",
+      "EndTime": "0001-01-01T00:00:00",
+      "PlayingDate": null,
+      "matchScheduleIndex": 0,
+      "IsScheduled": false
+    },
+    {
+      "Id": 8,
+      "Round": 1,
+      "MatchDuration": 30,
+      "CourtId": null,
+      "ClassId": 1145,
+      "StartTime": "0001-01-01T00:00:00",
+      "EndTime": "0001-01-01T00:00:00",
+      "PlayingDate": null,
+      "matchScheduleIndex": 0,
+      "IsScheduled": false
+    },
+    {
+      "Id": 9,
+      "Round": 1,
+      "MatchDuration": 30,
+      "CourtId": null,
+      "ClassId": 1145,
+      "StartTime": "0001-01-01T00:00:00",
+      "EndTime": "0001-01-01T00:00:00",
+      "PlayingDate": null,
+      "matchScheduleIndex": 0,
+      "IsScheduled": false
+    },
+    {
+      "Id": 10,
+      "Round": 1,
+      "MatchDuration": 30,
+      "CourtId": null,
+      "ClassId": 1145,
+      "StartTime": "0001-01-01T00:00:00",
+      "EndTime": "0001-01-01T00:00:00",
+      "PlayingDate": null,
+      "matchScheduleIndex": 0,
+      "IsScheduled": false
+    },
+    {
+      "Id": 11,
+      "Round": 1,
+      "MatchDuration": 30,
+      "CourtId": null,
+      "ClassId": 1145,
+      "StartTime": "0001-01-01T00:00:00",
+      "EndTime": "0001-01-01T00:00:00",
+      "PlayingDate": null,
+      "matchScheduleIndex": 0,
+      "IsScheduled": false
+    },
+    {
+      "Id": 12,
+      "Round": 2,
+      "MatchDuration": 30,
+      "CourtId": null,
+      "ClassId": 1144,
+      "StartTime": "0001-01-01T00:00:00",
+      "EndTime": "0001-01-01T00:00:00",
+      "PlayingDate": null,
+      "matchScheduleIndex": 0,
+      "IsScheduled": false
+    },
+    {
+      "Id": 13,
+      "Round": 2,
+      "MatchDuration": 30,
+      "CourtId": null,
+      "ClassId": 1144,
+      "StartTime": "0001-01-01T00:00:00",
+      "EndTime": "0001-01-01T00:00:00",
+      "PlayingDate": null,
+      "matchScheduleIndex": 0,
+      "IsScheduled": false
+    },
+    {
+      "Id": 14,
+      "Round": 2,
+      "MatchDuration": 30,
+      "CourtId": null,
+      "ClassId": 1144,
+      "StartTime": "0001-01-01T00:00:00",
+      "EndTime": "0001-01-01T00:00:00",
+      "PlayingDate": null,
+      "matchScheduleIndex": 0,
+      "IsScheduled": false
+    },
+    {
+      "Id": 15,
+      "Round": 2,
+      "MatchDuration": 30,
+      "CourtId": null,
+      "ClassId": 1144,
+      "StartTime": "0001-01-01T00:00:00",
+      "EndTime": "0001-01-01T00:00:00",
+      "PlayingDate": null,
+      "matchScheduleIndex": 0,
+      "IsScheduled": false
+    },
+    {
+      "Id": 16,
+      "Round": 2,
+      "MatchDuration": 30,
+      "CourtId": null,
+      "ClassId": 1144,
+      "StartTime": "0001-01-01T00:00:00",
+      "EndTime": "0001-01-01T00:00:00",
+      "PlayingDate": null,
+      "matchScheduleIndex": 0,
+      "IsScheduled": false
+    },
+    {
+      "Id": 17,
+      "Round": 2,
+      "MatchDuration": 30,
+      "CourtId": null,
+      "ClassId": 1144,
+      "StartTime": "0001-01-01T00:00:00",
+      "EndTime": "0001-01-01T00:00:00",
+      "PlayingDate": null,
+      "matchScheduleIndex": 0,
+      "IsScheduled": false
+    },
+    {
+      "Id": 18,
+      "Round": 2,
+      "MatchDuration": 30,
+      "CourtId": null,
+      "ClassId": 1145,
+      "StartTime": "0001-01-01T00:00:00",
+      "EndTime": "0001-01-01T00:00:00",
+      "PlayingDate": null,
+      "matchScheduleIndex": 0,
+      "IsScheduled": false
+    },
+    {
+      "Id": 19,
+      "Round": 2,
+      "MatchDuration": 30,
+      "CourtId": null,
+      "ClassId": 1145,
+      "StartTime": "0001-01-01T00:00:00",
+      "EndTime": "0001-01-01T00:00:00",
+      "PlayingDate": null,
+      "matchScheduleIndex": 0,
+      "IsScheduled": false
+    },
+    {
+      "Id": 20,
+      "Round": 2,
+      "MatchDuration": 30,
+      "CourtId": null,
+      "ClassId": 1145,
+      "StartTime": "0001-01-01T00:00:00",
+      "EndTime": "0001-01-01T00:00:00",
+      "PlayingDate": null,
+      "matchScheduleIndex": 0,
+      "IsScheduled": false
+    },
+    {
+      "Id": 21,
+      "Round": 2,
+      "MatchDuration": 30,
+      "CourtId": null,
+      "ClassId": 1145,
+      "StartTime": "0001-01-01T00:00:00",
+      "EndTime": "0001-01-01T00:00:00",
+      "PlayingDate": null,
+      "matchScheduleIndex": 0,
+      "IsScheduled": false
+    },
+    {
+      "Id": 22,
+      "Round": 2,
+      "MatchDuration": 30,
+      "CourtId": null,
+      "ClassId": 1145,
+      "StartTime": "0001-01-01T00:00:00",
+      "EndTime": "0001-01-01T00:00:00",
+      "PlayingDate": null,
+      "matchScheduleIndex": 0,
+      "IsScheduled": false
+    },
+    {
+      "Id": 23,
+      "Round": 3,
+      "MatchDuration": 30,
+      "CourtId": null,
+      "ClassId": 1144,
+      "StartTime": "0001-01-01T00:00:00",
+      "EndTime": "0001-01-01T00:00:00",
+      "PlayingDate": null,
+      "matchScheduleIndex": 0,
+      "IsScheduled": false
+    },
+    {
+      "Id": 24,
+      "Round": 3,
+      "MatchDuration": 30,
+      "CourtId": null,
+      "ClassId": 1144,
+      "StartTime": "0001-01-01T00:00:00",
+      "EndTime": "0001-01-01T00:00:00",
+      "PlayingDate": null,
+      "matchScheduleIndex": 0,
+      "IsScheduled": false
+    },
+    {
+      "Id": 25,
+      "Round": 3,
+      "MatchDuration": 30,
+      "CourtId": null,
+      "ClassId": 1144,
+      "StartTime": "0001-01-01T00:00:00",
+      "EndTime": "0001-01-01T00:00:00",
+      "PlayingDate": null,
+      "matchScheduleIndex": 0,
+      "IsScheduled": false
+    },
+    {
+      "Id": 26,
+      "Round": 3,
+      "MatchDuration": 30,
+      "CourtId": null,
+      "ClassId": 1144,
+      "StartTime": "0001-01-01T00:00:00",
+      "EndTime": "0001-01-01T00:00:00",
+      "PlayingDate": null,
+      "matchScheduleIndex": 0,
+      "IsScheduled": false
+    },
+    {
+      "Id": 27,
+      "Round": 3,
+      "MatchDuration": 30,
+      "CourtId": null,
+      "ClassId": 1144,
+      "StartTime": "0001-01-01T00:00:00",
+      "EndTime": "0001-01-01T00:00:00",
+      "PlayingDate": null,
+      "matchScheduleIndex": 0,
+      "IsScheduled": false
+    },
+    {
+      "Id": 28,
+      "Round": 3,
+      "MatchDuration": 30,
+      "CourtId": null,
+      "ClassId": 1144,
+      "StartTime": "0001-01-01T00:00:00",
+      "EndTime": "0001-01-01T00:00:00",
+      "PlayingDate": null,
+      "matchScheduleIndex": 0,
+      "IsScheduled": false
+    },
+    {
+      "Id": 29,
+      "Round": 3,
+      "MatchDuration": 30,
+      "CourtId": null,
+      "ClassId": 1145,
+      "StartTime": "0001-01-01T00:00:00",
+      "EndTime": "0001-01-01T00:00:00",
+      "PlayingDate": null,
+      "matchScheduleIndex": 0,
+      "IsScheduled": false
+    },
+    {
+      "Id": 30,
+      "Round": 3,
+      "MatchDuration": 30,
+      "CourtId": null,
+      "ClassId": 1145,
+      "StartTime": "0001-01-01T00:00:00",
+      "EndTime": "0001-01-01T00:00:00",
+      "PlayingDate": null,
+      "matchScheduleIndex": 0,
+      "IsScheduled": false
+    },
+    {
+      "Id": 31,
+      "Round": 3,
+      "MatchDuration": 30,
+      "CourtId": null,
+      "ClassId": 1145,
+      "StartTime": "0001-01-01T00:00:00",
+      "EndTime": "0001-01-01T00:00:00",
+      "PlayingDate": null,
+      "matchScheduleIndex": 0,
+      "IsScheduled": false
+    },
+    {
+      "Id": 32,
+      "Round": 3,
+      "MatchDuration": 30,
+      "CourtId": null,
+      "ClassId": 1145,
+      "StartTime": "0001-01-01T00:00:00",
+      "EndTime": "0001-01-01T00:00:00",
+      "PlayingDate": null,
+      "matchScheduleIndex": 0,
+      "IsScheduled": false
+    },
+    {
+      "Id": 33,
+      "Round": 3,
+      "MatchDuration": 30,
+      "CourtId": null,
+      "ClassId": 1145,
+      "StartTime": "0001-01-01T00:00:00",
+      "EndTime": "0001-01-01T00:00:00",
+      "PlayingDate": null,
+      "matchScheduleIndex": 0,
+      "IsScheduled": false
+    },
+    {
+      "Id": 34,
+      "Round": 4,
+      "MatchDuration": 30,
+      "CourtId": null,
+      "ClassId": 1144,
+      "StartTime": "0001-01-01T00:00:00",
+      "EndTime": "0001-01-01T00:00:00",
+      "PlayingDate": null,
+      "matchScheduleIndex": 0,
+      "IsScheduled": false
+    },
+    {
+      "Id": 35,
+      "Round": 4,
+      "MatchDuration": 30,
+      "CourtId": null,
+      "ClassId": 1144,
+      "StartTime": "0001-01-01T00:00:00",
+      "EndTime": "0001-01-01T00:00:00",
+      "PlayingDate": null,
+      "matchScheduleIndex": 0,
+      "IsScheduled": false
+    },
+    {
+      "Id": 36,
+      "Round": 4,
+      "MatchDuration": 30,
+      "CourtId": null,
+      "ClassId": 1144,
+      "StartTime": "0001-01-01T00:00:00",
+      "EndTime": "0001-01-01T00:00:00",
+      "PlayingDate": null,
+      "matchScheduleIndex": 0,
+      "IsScheduled": false
+    },
+    {
+      "Id": 37,
+      "Round": 4,
+      "MatchDuration": 30,
+      "CourtId": null,
+      "ClassId": 1144,
+      "StartTime": "0001-01-01T00:00:00",
+      "EndTime": "0001-01-01T00:00:00",
+      "PlayingDate": null,
+      "matchScheduleIndex": 0,
+      "IsScheduled": false
+    },
+    {
+      "Id": 38,
+      "Round": 4,
+      "MatchDuration": 30,
+      "CourtId": null,
+      "ClassId": 1144,
+      "StartTime": "0001-01-01T00:00:00",
+      "EndTime": "0001-01-01T00:00:00",
+      "PlayingDate": null,
+      "matchScheduleIndex": 0,
+      "IsScheduled": false
+    },
+    {
+      "Id": 39,
+      "Round": 4,
+      "MatchDuration": 30,
+      "CourtId": null,
+      "ClassId": 1144,
+      "StartTime": "0001-01-01T00:00:00",
+      "EndTime": "0001-01-01T00:00:00",
+      "PlayingDate": null,
+      "matchScheduleIndex": 0,
+      "IsScheduled": false
+    },
+    {
+      "Id": 40,
+      "Round": 5,
+      "MatchDuration": 30,
+      "CourtId": null,
+      "ClassId": 1144,
+      "StartTime": "0001-01-01T00:00:00",
+      "EndTime": "0001-01-01T00:00:00",
+      "PlayingDate": null,
+      "matchScheduleIndex": 0,
+      "IsScheduled": false
+    },
+    {
+      "Id": 41,
+      "Round": 5,
+      "MatchDuration": 30,
+      "CourtId": null,
+      "ClassId": 1144,
+      "StartTime": "0001-01-01T00:00:00",
+      "EndTime": "0001-01-01T00:00:00",
+      "PlayingDate": null,
+      "matchScheduleIndex": 0,
+      "IsScheduled": false
+    },
+    {
+      "Id": 42,
+      "Round": 5,
+      "MatchDuration": 30,
+      "CourtId": null,
+      "ClassId": 1144,
+      "StartTime": "0001-01-01T00:00:00",
+      "EndTime": "0001-01-01T00:00:00",
+      "PlayingDate": null,
+      "matchScheduleIndex": 0,
+      "IsScheduled": false
+    },
+    {
+      "Id": 43,
+      "Round": 5,
+      "MatchDuration": 30,
+      "CourtId": null,
+      "ClassId": 1144,
+      "StartTime": "0001-01-01T00:00:00",
+      "EndTime": "0001-01-01T00:00:00",
+      "PlayingDate": null,
+      "matchScheduleIndex": 0,
+      "IsScheduled": false
+    },
+    {
+      "Id": 44,
+      "Round": 5,
+      "MatchDuration": 30,
+      "CourtId": null,
+      "ClassId": 1144,
+      "StartTime": "0001-01-01T00:00:00",
+      "EndTime": "0001-01-01T00:00:00",
+      "PlayingDate": null,
+      "matchScheduleIndex": 0,
+      "IsScheduled": false
+    },
+    {
+      "Id": 45,
+      "Round": 5,
+      "MatchDuration": 30,
+      "CourtId": null,
+      "ClassId": 1144,
+      "StartTime": "0001-01-01T00:00:00",
+      "EndTime": "0001-01-01T00:00:00",
+      "PlayingDate": null,
+      "matchScheduleIndex": 0,
+      "IsScheduled": false
+    }
+  ]
+}

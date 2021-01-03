@@ -19,6 +19,11 @@ namespace SchedulerR.Data
         {
         }
 
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            optionsBuilder.EnableSensitiveDataLogging();
+        }
+
         public DbSet<Tournament> Tournaments { get; set; }
 
 

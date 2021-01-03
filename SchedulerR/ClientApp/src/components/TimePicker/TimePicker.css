@@ -1,0 +1,31 @@
+span {
+  position: absolute;
+  right: 1%;
+  top: 17%;
+}
+
+.time-input {
+  max-width: 30vw;
+}
+
+div.hour,
+div.min {
+  border: 1px grey solid;
+  border-radius: 5px;
+  max-width: 20vw;
+  margin: 0px;
+  position: absolute;
+  background: #d9edf7;
+  z-index: 10;
+}
+
+.col {
+  padding-right: 0px;
+  padding-left: 0px;
+  text-align: center;
+  cursor: pointer;
+}
+
+.hide {
+  display: none;
+}
