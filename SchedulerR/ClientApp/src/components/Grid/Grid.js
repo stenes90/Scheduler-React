@@ -22,33 +22,38 @@ const Grid = (props) => {
   let scrollerWidth = timeslotsCountForTimeInterval * timeFieldWidth;
   scrollerWidth = scrollerWidth.toString() + "vw";
 
-  const timeSlots = [];
+  // const timeSlots = [];
 
-  let initialTime = new Date(date.startTime);
-  initialTime.setHours(0, 0, 0);
-  for (let i = 0; i < 288; i++) {
-    timeSlots.push({
-      time: initialTime,
-      index: i,
-      dateId: date.id,
-      courtId: props.court.id,
-    });
-    initialTime = new Date(initialTime.getTime() + 5 * 60000);
-  }
+  // let initialTime = new Date(date.startTime);
+  // initialTime.setHours(0, 0, 0);
+  // for (let i = 0; i < 288; i++) {
+  //   timeSlots.push({
+  //     time: initialTime,
+  //     index: i,
+  //     dateId: date.id,
+  //     courtId: props.court.id,
+  //   });
+  //   initialTime = new Date(initialTime.getTime() + 5 * 60000);
+  // }
 
+  const timeSlots = context.timeFields
+    .filter((c) => c.dateId == date.id)
+    .filter((d) => d.courtId == props.court.id);
   const renderedTimeslots = timeSlots.map((slot) => {
-    const displayed = slot.time < startTime ? "none" : "block";
+    const displayed = slot.displayed == false ? "none" : "block";
+    const zIndex = context.isMatchCoppied == true ? "10" : "0";
     return (
       <div
         className="timeslot"
-        key={slot.index}
-        style={{ display: displayed, width: slotWidthString }}
+        key={slot.id}
+        slotId={slot.id}
+        style={{ display: displayed, width: slotWidthString, zIndex: zIndex }}
         data-time={moment(slot.time).format()}
         data-index={slot.index}
         data-dateId={slot.dateId}
         data-courtId={slot.courtId}
       >
-        {slot.index}
+        {slot.id}
       </div>
     );
   });

@@ -38,17 +38,29 @@ const MatchItem = (props) => {
     return hours + ":" + minutes;
   };
 
+  // const onRightClick = (e) => {
+  //   if (context.isMacthCoppied == false) {
+  //     console.log(e);
+  //     debugger;
+  //   }
+  // };
+
   return (
-    <div
-      className="match"
-      style={{
-        left: matchPositionLeft,
-        width: matchWidth,
-        backgroundColor: color(),
-      }}
-    >
-      <p>time: {matchTimeString()}</p>
-    </div>
+    <>
+      <div
+        className="match"
+        data-matchId={props.match.id}
+        style={{
+          left: matchPositionLeft,
+          width: matchWidth,
+          backgroundColor: color(),
+          zIndex: 1,
+        }}
+      >
+        <p>time: {matchTimeString()}</p>
+        <p>time: {props.match.id}</p>
+      </div>
+    </>
   );
 };
 

@@ -6,9 +6,6 @@ import CourtList from "../Courts/CourtsList";
 import TimeBar from "../../Grid/TimeBar";
 
 const DateItem = (props) => {
-  // const context = useContext(TournamentContext);
-  // console.log(context);
-  // const dateObj = context.tournament.PlayingDates.find((c) => c.Id == props.id);
   const context = useContext(TournamentContext);
   const date = context.tournament.playingDates.find((c) => c.id === props.id);
 

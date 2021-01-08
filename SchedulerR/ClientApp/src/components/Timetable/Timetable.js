@@ -11,7 +11,9 @@ class Timetable extends React.Component {
     scheduled: false,
     tournament: Tournament.data,
     fieldWidth: 0,
-    timeFields: null,
+    timeFields: [],
+    coppiedMatch: null,
+    isMatchCoppied: false,
   };
 
   logIt = () => {
@@ -48,6 +50,7 @@ class Timetable extends React.Component {
         const matchTimeranges = [];
         const moment = extendMoment(Moment);
         let matches = tn.matches;
+
         matches.forEach((match) => {
           match.timeFields = [];
           const start = new Date(match.startTime);
@@ -76,6 +79,7 @@ class Timetable extends React.Component {
           fieldWidth: timeFieldWidth,
           setTournament: this.setTournament,
           timeFields: timeFields,
+          isMatchCoppied: false,
         });
       });
   };
@@ -98,18 +102,10 @@ class Timetable extends React.Component {
     return timeFieldWidth;
   };
 
-  // timeFields.forEach((item) => {
-  //   const start = item.time;
-  //   const end = new Date(start.getTime() + 5 * 60000);
-  //   const range = moment.range(start, end);
-  //   item.range = range;
-  //   timeFieldTimeranges.push(range);
-  // });
-
   timeFields = (dates, matches) => {
     const timeSlots = [];
     const moment = extendMoment(Moment);
-    let counter = 1;
+    let counter = 0;
     dates.forEach((date) => {
       const dateCourts = date.courts;
       dateCourts.forEach((court) => {
@@ -151,9 +147,192 @@ class Timetable extends React.Component {
     return timeSlots;
   };
 
-  // setTournament = (tn) => {
-  //   this.setState({ tournament: tn });
-  // };
+  copyMatch = (id) => {
+    let match = this.state.tournament.matches.find((c) => c.id == id);
+    this.setState({
+      isMatchCoppied: true,
+      coppiedMatch: match,
+    });
+  };
+
+  pasteMatch = (slotId) => {
+    const moment = extendMoment(Moment);
+    let coppiedMatch = this.state.coppiedMatch;
+    const coppiedMatchFields = coppiedMatch.timeFields;
+    const initialField = this.state.timeFields.find((f) => f.id == slotId);
+
+    const startTime = new Date(initialField.time);
+    const matchDuration = this.state.coppiedMatch.matchDuration;
+    const endTime = new Date(
+      initialField.time.getTime() + matchDuration * 60000
+    );
+    const range = moment.range(startTime, endTime);
+    const date = this.state.tournament.playingDates.find(
+      (d) => d.id == initialField.dateId
+    );
+
+    const courtId = initialField.courtId;
+    let tn = this.state.tournament;
+    let match = this.state.tournament.matches.find(
+      (m) => m.id == this.state.coppiedMatch.id
+    );
+    match.startTime = startTime;
+    match.endTime = endTime;
+    match.playingDate = date;
+    match.courtId = courtId;
+    match.range = range;
+    match.timeFields = [];
+    const timeFields = this.state.timeFields;
+
+    timeFields
+      .filter((d) => d.dateId == match.playingDate.id)
+      .filter((c) => c.courtId == match.courtId)
+      .forEach((timeField) => {
+        if (timeField.range.intersect(match.range)) {
+          match.timeFields.push(timeField.id);
+        }
+      });
+
+    coppiedMatchFields.forEach((item) => {
+      let field = timeFields.find((c) => c.id == item);
+      field.empty = true;
+    });
+
+    const matchesForCourt = this.state.tournament.matches.filter(
+      (m) => m.courtId == initialField.courtId
+    );
+
+    const firstIntersectedMatch = this.firstIntersectedMatch(
+      match,
+      matchesForCourt
+    );
+    let movement = 0;
+    if (firstIntersectedMatch) {
+      movement = this.movement(firstIntersectedMatch, match);
+    }
+    if (firstIntersectedMatch) {
+      for (let i = matchesForCourt.length - 1; i >= 0; i--) {
+        let match = matchesForCourt[i];
+        if (match.id == this.state.coppiedMatch.id) {
+          continue;
+        }
+        let emptyFields = timeFields
+          .filter((d) => d.dateId == match.playingDate.id)
+          .filter((c) => c.courtId == match.courtId)
+          .filter((e) => e.empty == true)
+          .filter((f) => f.id < match.timeFields[0])
+          .filter(
+            (g) =>
+              g.id >
+              firstIntersectedMatch.timeFields[
+                firstIntersectedMatch.timeFields.length - 1
+              ]
+          );
+        if (
+          emptyFields.length < movement &&
+          match.timeFields[0] >= firstIntersectedMatch.timeFields[0]
+        ) {
+          let moveFields = movement - emptyFields.length;
+          let moveMinutes = (movement - emptyFields.length) * 5;
+          let startTime = new Date(match.startTime);
+          startTime = new Date(startTime.getTime() + moveMinutes * 60000);
+          let endTime = new Date(match.endTime);
+          endTime = new Date(endTime.getTime() + moveMinutes * 60000);
+          const range = moment.range(startTime, endTime);
+          match.startTime = startTime;
+          match.endTime = endTime;
+          match.range = range;
+        }
+      }
+    }
+
+    matchesForCourt.forEach((match) => {
+      match.timeFields = [];
+      timeFields
+        .filter((d) => d.dateId == match.playingDate.id)
+        .filter((c) => c.courtId == match.courtId)
+        .forEach((timeField) => {
+          if (timeField.range.intersect(match.range)) {
+            match.timeFields.push(timeField.id);
+          }
+        });
+    });
+
+    const busyTimeFields = [];
+    matchesForCourt.forEach((match) => {
+      busyTimeFields.push(...match.timeFields);
+    });
+
+    const timeFieldsForCourt = timeFields
+      .filter((c) => c.courtId == coppiedMatch.courtId)
+      .filter((d) => d.dateId == coppiedMatch.playingDate.id);
+    for (let field of timeFieldsForCourt) {
+      if (busyTimeFields.includes(field.id)) {
+        field.empty = false;
+      } else {
+        field.empty = true;
+      }
+    }
+
+    console.log(timeFields);
+
+    this.setState({
+      tournament: tn,
+      isMatchCoppied: false,
+      coppiedMatch: null,
+    });
+  };
+
+  firstIntersectedMatch = (coppiedMatch, matchesForCourt) => {
+    let intersectedMatches = [];
+    let firstIntersectedMatch = null;
+    for (let match of matchesForCourt) {
+      if (match.id == coppiedMatch.id) {
+        continue;
+      }
+      if (match.range.intersect(coppiedMatch.range)) {
+        intersectedMatches.push(match);
+      }
+    }
+    //timefields for intersected matches
+    let timefields = [];
+    for (let item of intersectedMatches) {
+      for (let field of item.timeFields) {
+        timefields.push(field);
+      }
+    }
+
+    if (timefields.length > 0) {
+      const smallestTimeField = Math.min(...timefields);
+      firstIntersectedMatch = intersectedMatches.find((t) =>
+        t.timeFields.includes(smallestTimeField)
+      );
+    }
+    return firstIntersectedMatch;
+  };
+
+  movement = (intersectedMatch, coppiedMatch) => {
+    let movement = 0;
+    const matchTimeFieldsCount = intersectedMatch.timeFields.length;
+    if (coppiedMatch.timeFields[0] < intersectedMatch.timeFields[0]) {
+      movement =
+        coppiedMatch.timeFields[coppiedMatch.timeFields.length - 1] -
+        intersectedMatch.timeFields[0] +
+        1;
+    } else if (coppiedMatch.timeFields[0] == intersectedMatch.timeFields[0]) {
+      movement = coppiedMatch.timeFields.length;
+    } else {
+      movement =
+        coppiedMatch.timeFields[coppiedMatch.timeFields.length - 1] -
+        intersectedMatch.timeFields[intersectedMatch.timeFields.length - 1] +
+        intersectedMatch.timeFields.length;
+    }
+    return movement;
+  };
+
+  setTournament = (tn) => {
+    this.setState({ tournament: tn });
+  };
 
   // setFieldWidth = (vwValue) => {
   //   this.setState({ fieldWidth: vwValue });
@@ -170,7 +349,10 @@ class Timetable extends React.Component {
       if (this.state.scheduled) {
         return (
           <TournamentContext.Provider value={this.state}>
-            <TimetableContainer />
+            <TimetableContainer
+              copyMatch={this.copyMatch}
+              pasteMatch={this.pasteMatch}
+            />
           </TournamentContext.Provider>
         );
       }
