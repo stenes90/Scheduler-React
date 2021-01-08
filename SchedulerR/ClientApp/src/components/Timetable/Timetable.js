@@ -14,6 +14,8 @@ class Timetable extends React.Component {
     timeFields: [],
     coppiedMatch: null,
     isMatchCoppied: false,
+    versions: [],
+    activeVersion: 0,
   };
 
   logIt = () => {
@@ -73,6 +75,17 @@ class Timetable extends React.Component {
             });
         });
 
+        // var ver = JSON.parse(
+        //   JSON.stringify({ tournament: tn, timeFields: timeFields, id: 0 })
+        // );
+        var _ = require("lodash");
+        let ver = _.cloneDeep({
+          tournament: tn,
+          timeFields: timeFields,
+          id: 0,
+        });
+        let versions = [];
+        versions.push(ver);
         this.setState({
           tournament: tn,
           scheduled: true,
@@ -80,6 +93,8 @@ class Timetable extends React.Component {
           setTournament: this.setTournament,
           timeFields: timeFields,
           isMatchCoppied: false,
+          versions: versions,
+          activeVersion: 0,
         });
       });
   };
@@ -160,12 +175,10 @@ class Timetable extends React.Component {
     let coppiedMatch = this.state.coppiedMatch;
     const coppiedMatchFields = coppiedMatch.timeFields;
     const initialField = this.state.timeFields.find((f) => f.id == slotId);
-
+    debugger;
     const startTime = new Date(initialField.time);
     const matchDuration = this.state.coppiedMatch.matchDuration;
-    const endTime = new Date(
-      initialField.time.getTime() + matchDuration * 60000
-    );
+    const endTime = new Date(startTime.getTime() + matchDuration * 60000);
     const range = moment.range(startTime, endTime);
     const date = this.state.tournament.playingDates.find(
       (d) => d.id == initialField.dateId
@@ -274,12 +287,30 @@ class Timetable extends React.Component {
       }
     }
 
-    console.log(timeFields);
+    let versions = this.state.versions.filter(
+      (c) => c.id <= this.state.activeVersion
+    );
+    let verId = versions.length;
+    var _ = require("lodash");
+    let ver = _.cloneDeep({
+      timeFields: timeFields,
+      tournament: tn,
+      id: verId,
+    });
+    // var ver = JSON.parse(
+    //   JSON.stringify({ timeFields: timeFields, tournament: tn, id: verId })
+    // );
+    debugger;
+    versions.push(ver);
 
     this.setState({
       tournament: tn,
       isMatchCoppied: false,
       coppiedMatch: null,
+      versions: versions,
+      activeVersion: verId,
+      coppiedMatch: null,
+      isMatchCoppied: false,
     });
   };
 
@@ -330,17 +361,40 @@ class Timetable extends React.Component {
     return movement;
   };
 
+  undoTimetable = () => {
+    const versions = this.state.versions;
+
+    var _ = require("lodash");
+    let previousVersion = _.cloneDeep(versions[this.state.activeVersion - 1]);
+
+    //const previousVersion = versions[this.state.activeVersion - 1];
+    let activeVer = this.state.activeVersion - 1;
+    debugger;
+    this.setState({
+      tournament: previousVersion.tournament,
+      timeFields: previousVersion.timeFields,
+      activeVersion: activeVer,
+    });
+  };
+  redoTimetable = () => {
+    const versions = this.state.versions;
+
+    var _ = require("lodash");
+    let nextVersion = _.cloneDeep(versions[this.state.activeVersion + 1]);
+
+    //const previousVersion = versions[this.state.activeVersion - 1];
+    let activeVer = this.state.activeVersion + 1;
+    debugger;
+    this.setState({
+      tournament: nextVersion.tournament,
+      timeFields: nextVersion.timeFields,
+      activeVersion: activeVer,
+    });
+  };
+
   setTournament = (tn) => {
     this.setState({ tournament: tn });
   };
-
-  // setFieldWidth = (vwValue) => {
-  //   this.setState({ fieldWidth: vwValue });
-  // };
-
-  // setTimeFields = (fields) => {
-  //   this.setState({ timeFields: fields });
-  // };
 
   render() {
     console.log("timetable component loaded");
@@ -357,10 +411,43 @@ class Timetable extends React.Component {
         );
       }
     };
+    const renderUndoBtn = () => {
+      if (this.state.activeVersion > 0) {
+        return (
+          <button disabled={false} onClick={this.undoTimetable}>
+            Undo
+          </button>
+        );
+      } else {
+        return (
+          <button disabled={true} onClick={this.undoTimetable}>
+            Undo
+          </button>
+        );
+      }
+    };
+
+    const renderRedoBtn = () => {
+      if (this.state.activeVersion < this.state.versions.length - 1) {
+        return (
+          <button disabled={false} onClick={this.redoTimetable}>
+            Redo
+          </button>
+        );
+      } else {
+        return (
+          <button disabled={true} onClick={this.redoTimetable}>
+            Redo
+          </button>
+        );
+      }
+    };
 
     return (
       <div>
         <button onClick={this.onScheduleMatchesClick}>Schedule Matches</button>
+        {renderUndoBtn()}
+        {renderRedoBtn()}
         {renderTimetable()}
       </div>
     );
